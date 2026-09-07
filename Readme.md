@@ -12,6 +12,16 @@ A partir del análisis de variables relacionadas con el **tamaño de la empresa,
 
 ---
 
+## 🗂️ Fuente y alcance del dataset
+
+**Fuente:** [Kaggle — Global AI Tool Adoption Across Industries](https://www.kaggle.com/datasets/tfisthis/global-ai-tool-adoption-across-industries).
+
+El archivo utilizado contiene **145.000 registros y 9 variables**: país, industria, herramienta de IA, tasa de adopción, usuarios activos diarios, año, feedback de usuario, grupo etario y tamaño de empresa. El período cubierto por el archivo es **2023–2024**.
+
+Cada fila se analiza como una observación de adopción y uso de una herramienta de IA. La base no incluye un identificador único de empresa, por lo que no permite contar compañías únicas ni seguir a la misma organización entre ambos años.
+
+---
+
 ## 🎯 Pregunta principal
 
 > **¿Qué factores —tipo de herramienta, industria y tamaño de empresa— determinan el éxito en la adopción y uso diario de IA, y dónde están las mayores oportunidades de inversión tecnológica para las empresas?**
