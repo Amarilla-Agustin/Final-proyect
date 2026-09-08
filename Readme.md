@@ -376,6 +376,39 @@ La presentación sigue la siguiente estructura:
    - Insights y recomendaciones.
 
 > **La presentación prioriza la comunicación de resultados sobre los aspectos técnicos. No se incluye código.**
+---
+# ▶️ Cómo ejecutar el proyecto
+
+### Requisitos
+
+- Python 3.x
+- Jupyter Notebook o JupyterLab
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+
+<!-- pendiente a actualizar al terminar el proyecto -->
+### Instalación
+
+Clonar el repositorio:
+
+```bash
+git clone <https://github.com/Amarilla-Agustin/Final-proyect.git>
+cd <Final-proyect.git>
+```
+
+Instalar las dependencias:
+
+```bash
+pip install -r requirements.txt
+```
+
+Ejecutar Jupyter Notebook en orden:
+
+```bash
+jupyter notebook
+```
 
 ---
 
