@@ -2,400 +2,438 @@
 
 ## 📊 Descripción del proyecto
 
-Este proyecto analiza los patrones de **adopción y uso de herramientas de Inteligencia Artificial (IA) en empresas**, con el objetivo de identificar qué factores están asociados con una mayor adopción y cuáles generan un mayor nivel de uso diario.
+Este proyecto analiza los patrones de **adopción y uso de herramientas de Inteligencia Artificial (IA) en empresas**, con el objetivo de identificar qué factores están asociados con la adopción y con el nivel de uso diario.
 
-El análisis busca responder una pregunta de negocio concreta: **¿qué características de una empresa y de las herramientas utilizadas pueden explicar el éxito en la adopción de IA?**
+El análisis busca responder una pregunta de negocio concreta:
 
-A partir del análisis de variables relacionadas con el **tamaño de la empresa, industria, herramienta de IA, año, tasa de adopción y usuarios activos diarios**, se buscan patrones que permitan formular recomendaciones para la toma de decisiones sobre inversión y estrategia tecnológica.
+> **¿Qué factores —tipo de herramienta, industria y tamaño de empresa— están asociados con el éxito en la adopción y uso diario de IA?**
 
-> **Enfoque:** este proyecto se plantea como un caso de análisis real, donde los datos se utilizan para responder preguntas de negocio y no únicamente para generar visualizaciones.
+A partir de variables relacionadas con el **tamaño de la empresa, industria, herramienta de IA, año, tasa de adopción y usuarios activos diarios**, se identifican patrones y se evalúa si estas variables permiten diferenciar niveles relevantes de adopción o engagement.
+
+> **Enfoque:** el proyecto se plantea como un caso de análisis de datos orientado a responder preguntas concretas y transformar los resultados en conclusiones interpretables, y no únicamente en generar visualizaciones.
 
 ---
 
 ## 🗂️ Fuente y alcance del dataset
 
-**Fuente:** [Kaggle — Global AI Tool Adoption Across Industries](https://www.kaggle.com/datasets/tfisthis/global-ai-tool-adoption-across-industries).
+**Fuente:** [Kaggle — Global AI Tool Adoption Across Industries](https://www.kaggle.com/datasets/tfisthis/global-ai-tool-adoption-across-industries)
 
-El archivo utilizado contiene **145.000 registros y 9 variables**: país, industria, herramienta de IA, tasa de adopción, usuarios activos diarios, año, feedback de usuario, grupo etario y tamaño de empresa. El período cubierto por el archivo es **2023–2024**.
+El dataset utilizado contiene **145.000 registros y 9 variables**:
 
-Cada fila se analiza como una observación de adopción y uso de una herramienta de IA. La base no incluye un identificador único de empresa, por lo que no permite contar compañías únicas ni seguir a la misma organización entre ambos años.
+- País
+- Industria
+- Herramienta de IA
+- Tasa de adopción
+- Usuarios activos diarios
+- Año
+- Feedback de usuario
+- Grupo etario
+- Tamaño de empresa
+
+El período observado comprende los años **2023 y 2024**.
+
+Cada fila se interpreta como una observación de adopción y uso de una herramienta de IA. La base no incluye un identificador único de empresa, por lo que **no permite contar compañías únicas ni realizar un seguimiento de la misma organización entre ambos años**.
 
 ---
 
 ## 🎯 Pregunta principal
 
-> **¿Qué factores —tipo de herramienta, industria y tamaño de empresa— determinan el éxito en la adopción y uso diario de IA, y dónde están las mayores oportunidades de inversión tecnológica para las empresas?**
+> **¿Qué factores —tipo de herramienta, industria y tamaño de empresa— están asociados con el éxito en la adopción y uso diario de IA?**
 
 ---
 
 ## 💡 Objetivo del análisis
 
-Identificar patrones de éxito en la implementación de Inteligencia Artificial para **recomendar estrategias de digitalización a empresas según su industria y tamaño**, buscando maximizar tanto la adopción como el uso activo de las herramientas.
+Identificar patrones de adopción y utilización de herramientas de IA y determinar si el **tamaño de empresa, la industria, el tipo de herramienta y el año** presentan diferencias relevantes en las métricas analizadas.
 
-El análisis pretende pasar de los datos a conclusiones accionables, identificando:
+El análisis busca responder:
 
-- Qué tamaños de empresa presentan mayores niveles de adopción.
-- Qué industrias muestran una mayor utilización de IA.
-- Qué tipos de herramientas predominan según la industria.
-- Cómo evolucionó la adopción entre 2023 y 2024.
-- Qué herramientas presentan mayores niveles de engagement.
-- Qué oportunidades de inversión tecnológica pueden identificarse a partir de estos patrones.
+- ¿Existen diferencias de adopción según el tamaño de empresa?
+- ¿Qué categorías de IA presentan mayores niveles de adopción según la industria?
+- ¿Cómo evolucionaron la adopción y los usuarios activos diarios entre 2023 y 2024?
+- ¿Qué herramientas presentan mayores niveles de uso diario?
+- ¿La presencia de una herramienta en la muestra se relaciona con un mayor engagement?
 
 ---
 
-## 🔎 Preguntas secundarias
+# 🔎 Preguntas de análisis
 
-El análisis se estructura alrededor de cuatro preguntas:
-
-### 1. Adopción según tamaño de empresa
+## 1. Adopción según tamaño de empresa
 
 **¿Existen diferencias significativas en la tasa de adopción entre Startups, PyMEs (SME) y grandes corporaciones (Enterprise)?**
 
-Se compararán los niveles de adopción entre los distintos tamaños de empresa para determinar si la estructura y dimensión organizacional están relacionadas con la velocidad de incorporación de IA.
+Se comparan los niveles de adopción entre los distintos tamaños de empresa mediante medidas de tendencia central y distribución.
 
-**Métricas principales:**
+### Métricas principales
 
 - Promedio de `adoption_rate`
 - Mediana de `adoption_rate`
+- Cantidad de registros por segmento
 - Distribución de la tasa de adopción
 
-**Visualización propuesta:** Boxplot.
+### Visualización
 
-**Decisión de negocio:** orientar estrategias comerciales y de consultoría de IA hacia los segmentos con mayor potencial de adopción.
+Gráfico de barras para comparar la adopción promedio entre segmentos.
+
+### Decisión de negocio
+
+Evaluar si el tamaño de empresa constituye un criterio útil para diferenciar estrategias de adopción de IA.
 
 ---
 
-### 2. Uso de IA generativa según industria
+## 2. Uso de IA generativa según industria
 
-**¿Qué industrias lideran el uso de IA generativa de texto frente a herramientas de generación de imágenes?**
+**¿Qué industrias presentan diferencias entre la adopción de IA generativa de texto y de imagen?**
 
-Las herramientas serán clasificadas en categorías de uso, permitiendo comparar los patrones de adopción entre IA generativa de texto e IA generativa de imágenes.
+Las herramientas se clasifican en dos categorías:
 
-**Variables principales:**
+- **Generación de Texto:** ChatGPT, Claude y Bard.
+- **Generación de Imagen:** Midjourney y Stable Diffusion.
+
+### Variables principales
 
 - `industry`
 - `ai_tool`
+- `tool_category`
 - `adoption_rate`
 
-**Transformaciones:**
+### Transformaciones
 
-- Clasificación de las herramientas según tipo de IA.
-- Agrupación por industria.
-- Tabla pivote para comparar categorías.
+- Clasificación de herramientas mediante un mapeo.
+- Agrupación por industria y categoría de IA.
+- Creación de tablas de comparación.
+- Cálculo de la diferencia entre adopción de texto e imagen.
 
-**Métrica principal:**
+### Métrica principal
 
-- Tasa de adopción promedio por categoría.
+- Tasa de adopción promedio por industria y categoría.
 
-**Visualización propuesta:** Barras apiladas al 100%.
+### Visualización
 
-**Decisión de negocio:** determinar qué tipos de licencias, herramientas y capacitaciones podrían resultar más relevantes según la industria.
+Gráfico de barras comparativo.
+
+### Decisión de negocio
+
+Determinar si la industria permite identificar una preferencia clara por una categoría de IA.
 
 ---
 
-### 3. Evolución de la adopción
+## 3. Evolución de la adopción
 
-**¿Cómo evolucionó la tasa de adopción promedio y el volumen de usuarios diarios entre 2023 y 2024?**
+**¿Cómo evolucionaron la tasa de adopción promedio y los usuarios activos diarios entre 2023 y 2024?**
 
-Se analizará la evolución temporal de la adopción, comparando los resultados entre años y, cuando corresponda, entre industrias.
+Se comparan los principales indicadores entre ambos años para determinar si existe una tendencia de crecimiento, estabilidad o disminución.
 
-**Variables principales:**
+### Variables principales
 
 - `year`
-- `industry`
 - `adoption_rate`
 - `daily_active_users`
 
-**Métricas:**
+### Métricas
 
 - Tasa de adopción promedio.
-- Variación interanual.
-- Evolución de usuarios activos diarios.
+- Variación interanual de adopción.
+- DAU promedio.
+- Variación interanual de DAU.
 
-**Visualización propuesta:**
+### Visualización
 
-- Gráfico de líneas.
-- Barras agrupadas.
-- Slope chart para comparaciones entre períodos.
+Gráficos de líneas para comparar la evolución de ambos indicadores.
 
-**Decisión de negocio:** evaluar la velocidad de crecimiento de la adopción y determinar si existe una necesidad creciente de inversión en IA.
+### Decisión de negocio
+
+Determinar si los datos muestran una aceleración de la adopción o, por el contrario, un comportamiento estable durante el período analizado.
 
 ---
 
-### 4. Engagement por herramienta
+## 4. Engagement por herramienta
 
-**¿Qué herramientas generan mayor retención o engagement medido a través de usuarios activos diarios (DAU)?**
+**¿Qué herramientas presentan mayores niveles de utilización medidos a través de usuarios activos diarios (DAU)?**
 
-La tasa de adopción no necesariamente implica un uso intensivo. Por este motivo, se analizará el volumen de usuarios activos diarios para identificar qué herramientas generan mayor utilización efectiva.
+La tasa de adopción y el uso diario representan dimensiones diferentes. Por este motivo, se analiza el DAU promedio para comparar el nivel de utilización de cada herramienta.
 
-**Variables principales:**
+### Variables principales
 
 - `ai_tool`
 - `daily_active_users`
+- `adoption_rate`
 
-**Métrica principal:**
+### Métricas
 
-- Promedio de `daily_active_users` por herramienta.
+- DAU promedio por herramienta.
+- Tasa de adopción promedio.
+- Cantidad de registros por herramienta.
 
-**Visualización propuesta:** Barras horizontales ordenadas.
+### Visualización
 
-**Decisión de negocio:** identificar qué herramientas podrían ser candidatas para una estrategia de estandarización o adopción institucional.
+Ranking mediante barras horizontales ordenadas.
+
+### Decisión de negocio
+
+Evaluar las herramientas considerando su utilización efectiva y no únicamente su presencia o cantidad de registros en la muestra.
 
 ---
 
 # 🧠 Hipótesis iniciales
 
-Antes de realizar el análisis se plantean las siguientes hipótesis:
+Antes del análisis se plantearon las siguientes hipótesis:
 
 ### Hipótesis 1 — Tamaño de empresa
 
-> **Las Startups presentan una tasa de adopción general mayor que las Enterprises**, debido a una mayor agilidad organizacional y una menor cantidad de niveles burocráticos para incorporar nuevas tecnologías.
+> **Las Startups presentan una tasa de adopción general mayor que las Enterprises**, debido a una mayor agilidad organizacional para incorporar nuevas tecnologías.
 
 ### Hipótesis 2 — Tipo de herramienta e industria
 
-> **ChatGPT y otras herramientas de IA generativa de texto presentan una adopción transversal entre industrias**, mientras que las herramientas de generación de imágenes presentan niveles de adopción especialmente elevados en determinados sectores creativos y comerciales.
+> **Las herramientas de IA generativa de texto presentan una adopción transversal entre industrias**, mientras que las herramientas de generación de imágenes podrían presentar mayores niveles de adopción en determinados sectores.
 
 ### Hipótesis 3 — Evolución temporal
 
-> **La adopción de IA aumentó significativamente entre 2023 y 2024**, reflejando una aceleración general en la incorporación de estas tecnologías por parte de las empresas.
+> **La adopción de IA aumentó significativamente entre 2023 y 2024**, reflejando una aceleración general en la incorporación de estas tecnologías.
 
-Las hipótesis serán contrastadas con los datos y **no se asumirán como conclusiones previamente confirmadas**.
+Las hipótesis fueron planteadas como **supuestos iniciales** y posteriormente contrastadas con los datos.
 
 ---
 
 # 📐 Metodología
 
-El análisis seguirá un proceso de trabajo orientado a responder las preguntas planteadas:
+El análisis sigue un proceso estructurado:
 
 ### 1. Exploración de los datos
 
 - Identificación de variables.
 - Análisis de tipos de datos.
 - Detección de valores nulos.
-- Identificación de posibles valores atípicos.
-- Análisis de la distribución de las variables principales.
+- Identificación de duplicados.
+- Análisis estadístico de variables numéricas.
+- Revisión de valores únicos en variables categóricas.
 
-### 2. Preparación y transformación
+### 2. Limpieza y preparación
 
-Se realizarán las transformaciones necesarias para poder responder las preguntas de negocio, incluyendo:
+La revisión inicial confirmó:
 
-- Agrupaciones mediante `groupby`.
-- Cálculo de estadísticas descriptivas.
-- Creación de nuevas variables.
-- Clasificación de herramientas por tipo.
-- Tablas pivote.
-- Cálculo de variaciones interanuales.
+- **145.000 registros.**
+- **9 variables.**
+- **Sin valores faltantes.**
+- **Sin filas exactamente duplicadas.**
+
+Se validaron las variables numéricas y se creó `tool_category` para clasificar las herramientas entre generación de texto e imagen.
+
+Además, `company_size` y `tool_category` se transformaron en variables categóricas ordenadas para mantener una presentación consistente en tablas y gráficos.
 
 ### 3. Análisis exploratorio
 
-Se utilizarán diferentes visualizaciones para identificar patrones y diferencias entre:
+Se realizaron análisis sobre:
 
-- Tamaños de empresa.
-- Industrias.
-- Herramientas.
-- Tipos de IA.
-- Períodos de tiempo.
+- Tamaño de empresa.
+- Industria.
+- Tipo de herramienta.
+- Categoría de IA.
+- Evolución temporal.
+- Usuarios activos diarios.
 
 ### 4. Interpretación
 
-Los resultados serán interpretados desde una perspectiva de negocio, buscando responder:
+Los resultados se interpretan desde una perspectiva de negocio, buscando responder:
 
 > **¿Qué significa este resultado y qué decisión podría apoyar?**
 
-El objetivo no será únicamente describir los datos, sino transformar los resultados en **insights accionables**.
+El objetivo es diferenciar los resultados descriptivos de las conclusiones que realmente pueden sostenerse con la evidencia disponible.
 
 ---
 
 # 📌 KPIs principales
 
-| KPI                          | Descripción                                         |
-| ---------------------------- | --------------------------------------------------- |
-| **Adoption Rate**            | Tasa de adopción de herramientas de IA              |
-| **Daily Active Users (DAU)** | Usuarios activos diarios de cada herramienta        |
-| **Adopción promedio**        | Promedio de adopción según segmento                 |
-| **Mediana de adopción**      | Valor central de la distribución de adopción        |
-| **Variación interanual**     | Cambio porcentual entre 2023 y 2024                 |
-| **Adopción por industria**   | Nivel promedio de adopción dentro de cada industria |
-| **Adopción por tipo de IA**  | Comparación entre herramientas de texto e imagen    |
+| KPI | Resultado / descripción |
+|---|---|
+| **Tasa de adopción promedio global** | 49,92% aproximadamente |
+| **Adopción promedio 2023** | 50,02% |
+| **Adopción promedio 2024** | 49,81% |
+| **Variación interanual de adopción** | -0,21 puntos porcentuales |
+| **DAU promedio 2023** | 5.034 |
+| **DAU promedio 2024** | 5.041 |
+| **Variación interanual del DAU** | +0,13% |
+| **Herramienta con mayor DAU promedio** | Claude — 5.063,64 |
+| **Herramienta con mayor cantidad de registros** | ChatGPT — 58.045 registros |
+
+> Los KPIs se calculan sobre los registros disponibles en el dataset y no representan necesariamente empresas únicas.
 
 ---
 
 # 📈 Resultados y hallazgos
 
-> Esta sección se completará una vez finalizado el análisis exploratorio.
+## 1. El tamaño de empresa no muestra una brecha práctica de adopción
 
-Se documentarán los principales hallazgos encontrados en los datos, priorizando aquellos que tengan relevancia para la toma de decisiones.
+**Resultado:** las Startups registran una adopción promedio de **50,04%**, frente a **49,84% en Enterprise** y **49,74% en SME**.
 
-Para cada hallazgo se buscará responder:
+La diferencia máxima entre segmentos es de apenas **0,30 puntos porcentuales**.
 
-1. **¿Qué encontramos?**
-2. **¿Qué evidencia lo demuestra?**
-3. **¿Por qué es relevante?**
-4. **¿Qué decisión podría apoyar?**
+**Interpretación:** los tres segmentos presentan niveles de adopción muy similares, concentrados alrededor del 50%.
 
-### Hallazgo 1
+**Conclusión:** el tamaño de empresa, por sí solo, **no permite identificar una ventaja relevante de adopción ni justificar una priorización comercial basada únicamente en este factor**.
 
-*Pendiente de análisis.*
+---
 
-### Hallazgo 2
+## 2. Texto e imagen presentan niveles de adopción muy similares entre industrias
 
-*Pendiente de análisis.*
+**Resultado:** la mayor diferencia observada entre las categorías de generación de texto e imagen es de aproximadamente **0,58 puntos porcentuales**.
 
-### Hallazgo 3
+Por ejemplo:
 
-*Pendiente de análisis.*
+- **Transporte:** 50,10% para texto frente a 49,52% para imagen.
+- **Educación:** 49,56% para texto frente a 50,06% para imagen.
+
+**Interpretación:** la categoría con mayor adopción cambia según la industria y las diferencias son pequeñas.
+
+**Conclusión:** no existe evidencia suficiente para recomendar una categoría de IA sobre otra únicamente por su tasa de adopción promedio. La elección debería considerar principalmente el **caso de uso y las necesidades específicas de cada sector**.
+
+---
+
+## 3. La adopción y el uso diario se mantuvieron estables entre 2023 y 2024
+
+**Resultado:** la adopción promedio pasó de **50,02% en 2023 a 49,81% en 2024**, una disminución de **0,21 puntos porcentuales**.
+
+Durante el mismo período, el DAU promedio pasó de **5.034 a 5.041 usuarios**, equivalente a una variación aproximada de **+0,13%**.
+
+**Interpretación:** ambos indicadores presentan variaciones marginales.
+
+**Conclusión:** con los datos disponibles **no se puede sostener una aceleración general de la adopción de IA entre 2023 y 2024**. El uso diario también permanece esencialmente estable.
+
+---
+
+## 4. La cantidad de registros no implica mayor engagement
+
+**Resultado:** ChatGPT concentra **58.045 registros**, equivalentes al **40,03% de la muestra**, pero Claude presenta el mayor DAU promedio con **5.063,64 usuarios** frente a **5.030,00 de ChatGPT**.
+
+**Interpretación:** la cantidad de registros y el uso diario promedio representan dimensiones diferentes.
+
+Además, la diferencia de DAU entre ambas herramientas es reducida.
+
+**Conclusión:** no sería adecuado seleccionar o estandarizar una herramienta únicamente por su presencia en la muestra o por su posición en el ranking de DAU. Para una decisión real deberían incorporarse otros factores como **costos, casos de uso y satisfacción de los usuarios**.
 
 ---
 
 # 💼 Conclusiones y recomendaciones
 
-> Esta sección se completará luego de contrastar las hipótesis y analizar los resultados.
+El análisis muestra que las variables estudiadas presentan **diferencias muy pequeñas en términos de adopción**.
 
-Las conclusiones estarán orientadas a transformar los principales insights en recomendaciones concretas para la estrategia de adopción de IA.
+### Principales conclusiones
 
-Se buscará determinar:
+- La adopción promedio se mantiene alrededor del **50%** en la muestra.
+- No se observa una diferencia práctica relevante entre Startups, SME y Enterprise.
+- Las categorías de generación de texto e imagen presentan niveles de adopción muy similares entre industrias.
+- Entre 2023 y 2024, tanto la adopción como el DAU permanecen esencialmente estables.
+- La herramienta con mayor presencia en la muestra no necesariamente presenta el mayor DAU promedio.
+- La elección de una herramienta no debería basarse en una única métrica.
 
-- Qué segmentos presentan mayor potencial.
-- Qué industrias muestran oportunidades de crecimiento.
-- Qué herramientas tienen mayor nivel de engagement.
-- Qué tendencias justifican nuevas inversiones.
-- Qué estrategia de adopción podría recomendarse según el perfil de la empresa.
+### Recomendaciones
+
+A partir de estos resultados, se recomienda:
+
+1. **No segmentar una estrategia de adopción únicamente por tamaño de empresa**, debido a las diferencias mínimas observadas.
+2. **Seleccionar herramientas según el caso de uso y las necesidades de la industria**, ya que las diferencias entre categorías de IA son reducidas.
+3. **Complementar el análisis de DAU con costos, satisfacción y utilidad de la herramienta** antes de tomar decisiones de estandarización.
+4. Para futuros análisis, incorporar variables adicionales que permitan explicar mejor las diferencias de adopción.
+
+> Estas recomendaciones tienen carácter **informativo y exploratorio**. Los resultados describen asociaciones presentes en esta muestra y no permiten establecer relaciones causales ni generalizar automáticamente los resultados a todas las empresas.
+
+---
+
+# ⚠️ Supuestos y limitaciones
+
+- Cada fila se trata como una observación independiente de adopción y uso.
+- La base no incluye un ID de empresa, por lo que no permite identificar compañías únicas ni construir un seguimiento longitudinal individual.
+- La comparación entre 2023 y 2024 muestra asociaciones agregadas y no demuestra causalidad.
+- Solo se observan dos años, por lo que no es posible establecer una tendencia temporal de largo plazo.
+- La cantidad de registros puede diferir entre períodos y categorías, por lo que las variaciones deben interpretarse con cautela.
+- Se asume que `adoption_rate` y `daily_active_users` fueron medidos de manera consistente en todos los registros.
+- El dataset no proporciona información sobre el denominador utilizado para calcular `adoption_rate` ni sobre la metodología de muestreo.
+- `user_feedback` no se analiza en esta etapa.
+- El análisis no incorpora costos, satisfacción, productividad u otras variables necesarias para evaluar una decisión de inversión real.
+- Los resultados deben considerarse **descriptivos y exploratorios**, no como recomendaciones gerenciales definitivas.
+
+### Posibles extensiones
+
+Como trabajo futuro sería útil incorporar:
+
+- Análisis de sentimiento sobre `user_feedback`.
+- Identificador de empresa.
+- Datos con mayor granularidad temporal.
+- Tamaño de plantilla.
+- Costos de las herramientas.
+- Métricas de productividad.
+- Indicadores de satisfacción y retención.
 
 ---
 
 # 📂 Estructura del repositorio
 
 ```text
+Final-proyect/
+│
 ├── README.md
 ├── proyecto_final.ipynb
-├── data/
-│   └── dataset.csv
+├── requirements.txt
+│
+├── dataset/
+│   ├── raw/
+│   │   └── ai_adoption_dataset.csv
+│   │
+│   └── clean/
+│       └── ai_adoption_dataset.csv
+│
 └── presentacion/
     └── presentacion_final.pdf
 ```
 
 ### Archivos principales
-<!-- pendiente a cambiar cuando hagamos todo -->
+
 **`proyecto_final.ipynb`**
 
 Notebook principal que contiene:
 
 - Exploración de datos.
-- Limpieza y transformación.
-- Análisis.
+- Limpieza y preparación.
+- Transformación de variables.
+- Análisis exploratorio.
+- Cálculo de KPIs.
 - Visualizaciones.
 - Interpretación de resultados.
 - Conclusiones.
+- Limitaciones.
 
-**`data/`**
+**`dataset/`**
 
-Contiene el dataset utilizado en el análisis o, en caso de no poder distribuirse directamente, la referencia a su fuente.
+Contiene las versiones del dataset utilizadas durante el proyecto:
+
+- `raw/`: archivo original.
+- `clean/`: archivo preparado para el análisis.
+
+**`requirements.txt`**
+
+Contiene las dependencias necesarias para ejecutar el proyecto.
 
 **`presentacion/`**
 
-Contiene las diapositivas utilizadas para presentar los resultados.
+Contiene la presentación final utilizada para comunicar los principales resultados del análisis.
 
 ---
 
 # ▶️ Cómo ejecutar el proyecto
 
-### Requisitos
+## Requisitos
 
 - Python 3.x
 - Jupyter Notebook o JupyterLab
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
+- pip
 
-<!-- pendiente a actualizar al terminar el proyecto -->
-### Instalación
+## Instalación
 
 Clonar el repositorio:
 
 ```bash
-git clone <URL_DEL_REPOSITORIO>
-cd <NOMBRE_DEL_REPOSITORIO>
-```
-
-Instalar las dependencias:
-
-```bash
-pip install pandas numpy matplotlib seaborn jupyter
-```
-
-Ejecutar Jupyter Notebook:
-
-```bash
-jupyter notebook
-```
-
-Abrir:
-<!-- pendiente a cambio -->
-```text
-proyecto_final.ipynb
-```
-
-y ejecutar las celdas en orden.
-
----
-
-# 🎤 Presentación
-
-Los resultados del análisis se presentan en una presentación de **5 a 10 minutos**, orientada a una audiencia de negocio.
-
-La presentación sigue la siguiente estructura:
-
-1. **Resumen ejecutivo**
-
-   - Hallazgo principal.
-   - Recomendación principal.
-
-2. **Problema**
-
-   - Pregunta de negocio.
-
-3. **Dataset**
-
-   - Fuente y variables relevantes.
-
-4. **Metodología**
-
-   - Cómo se abordó el problema.
-
-5. **KPIs**
-
-   - Métricas utilizadas.
-
-6. **Hallazgos**
-
-   - Principales resultados.
-
-7. **Conclusiones**
-
-   - Insights y recomendaciones.
-
-> **La presentación prioriza la comunicación de resultados sobre los aspectos técnicos. No se incluye código.**
----
-# ▶️ Cómo ejecutar el proyecto
-
-### Requisitos
-
-- Python 3.x
-- Jupyter Notebook o JupyterLab
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-
-<!-- pendiente a actualizar al terminar el proyecto -->
-### Instalación
-
-Clonar el repositorio:
-
-```bash
-git clone <https://github.com/Amarilla-Agustin/Final-proyect.git>
-cd <Final-proyect.git>
+git clone https://github.com/Amarilla-Agustin/Final-proyect.git
+cd Final-proyect
 ```
 
 Instalar las dependencias:
@@ -404,11 +442,61 @@ Instalar las dependencias:
 pip install -r requirements.txt
 ```
 
-Ejecutar Jupyter Notebook en orden:
+Iniciar Jupyter Notebook:
 
 ```bash
 jupyter notebook
 ```
+
+Abrir:
+
+```text
+proyecto_final.ipynb
+```
+
+y ejecutar las celdas en orden.
+
+> **Nota:** el notebook utiliza rutas relativas hacia los archivos ubicados dentro de `dataset/raw/` y `dataset/clean/`. Por lo tanto, se recomienda ejecutar Jupyter desde la carpeta raíz del repositorio.
+
+---
+
+# 🎤 Presentación
+
+Los resultados del análisis se presentan en una exposición de **5 a 10 minutos**, orientada a una audiencia de negocio.
+
+La presentación sigue la siguiente estructura:
+
+1. **Resumen ejecutivo**
+   - Principales hallazgos.
+   - Conclusiones.
+
+2. **Problema**
+   - Pregunta de negocio.
+   - Objetivo del análisis.
+
+3. **Dataset**
+   - Fuente.
+   - Alcance.
+   - Variables relevantes.
+
+4. **Metodología**
+   - Limpieza.
+   - Transformación.
+   - Análisis exploratorio.
+
+5. **KPIs**
+   - Principales métricas.
+
+6. **Hallazgos**
+   - Resultados más relevantes.
+   - Evidencia visual.
+
+7. **Conclusiones**
+   - Insights.
+   - Recomendaciones.
+   - Limitaciones.
+
+> **La presentación prioriza la comunicación de resultados sobre los aspectos técnicos y no incluye código.**
 
 ---
 
@@ -420,12 +508,14 @@ jupyter notebook
 - **Matplotlib**
 - **Seaborn**
 - **Jupyter Notebook**
-- **Git / GitHub**
+- **Git**
+- **GitHub**
 
 ---
 
-# 👤 Autor
+# 👤 Autores
 
-**Agustín Amarilla, Guillermo Kafka**
+**Agustín Amarilla**  
+**Guillermo Kafka**
 
-Proyecto final — Análisis de Datos - Comunidad IT
+Proyecto Final — **Análisis de Datos | Comunidad IT**
